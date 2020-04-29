@@ -6,6 +6,12 @@
 @import "tools/mixins.scss";
 @import "tools/placeholders.scss";
 
+/*----------MAIN FLEX-----------*/
+.main-flex {
+  @include flex(column, space-between, center);
+  margin: 0 auto;
+}
+
 /*----------HEADER NAV TOP-----------*/
 .first-nav {
   @include flex(row, space-between, center);
@@ -110,6 +116,7 @@
     }
   }
 }
+
 #seconde-nav__icon {
   color: $white;
   font-size: 150%;
@@ -211,14 +218,14 @@
     right: -1px;
     width: 100%;
     top: -10px;
-   
+
     @include respond-to(large) {
       display: block;
     }
     @include respond-to(xlarge) {
       display: block;
       width: 55%;
-     padding: 100px 0;
+      padding: 100px 0;
     }
   }
   &__pic {
@@ -280,11 +287,19 @@
 
 /*----------FIRST SECTION----------*/
 .tutorial-section {
-  max-width: 460px;
+  flex: 1;
   @include respond-to(small) {
     max-width: 550px;
   }
-
+  @include respond-to(medium) {
+    max-width: 550px;
+  }
+  @include respond-to(large) {
+    max-width: 680px;
+  }
+  @include respond-to(xlarge) {
+    max-width: 1100px;
+  }
   &__head {
     @include flex(row, space-between, center);
     height: 50px;
@@ -326,17 +341,47 @@
 
 /*----------BOX SECTION----------*/
 .box-section {
+  margin: 0 auto;
+  max-width: 460px;
+
+  @include respond-to(small) {
+    max-width: 100%;
+  }
+  @include respond-to(medium) {
+    @include flex(column, space-between, center);
+    max-width: 100%;
+  }
+  @include respond-to(large) {
+    @include flex(row, space-between, stretch);
+    max-width: 100%;
+    flex-wrap: wrap;
+  }
+  @include respond-to(xlarge) {
+    @include flex(row, space-between, stretch);
+    max-width: 100%;
+  }
+
+  &__wrap {
+    @include respond-to(large) {
+      flex-wrap: wrap;
+    }
+    @include respond-to(xlarge) {
+      flex-wrap: wrap;
+    }
+  }
 
   &__item {
     @include flex(column, stretch, stretch);
     margin: 2em 0;
-   
-    
+    width: calc(100% - 22px);
+    @include respond-to(large) {
+      width: calc(50% - 22px);
+    }
     @include respond-to(xlarge) {
-      flex-basis: 23%;
-    
+      width: calc(25% - 22px);
     }
   }
+
   &__img {
     position: relative;
     margin-bottom: -22px;
@@ -464,11 +509,27 @@
     z-index: 2;
     max-width: 440px;
     margin: 0 auto;
+    @include respond-to(small) {
+      max-width: 530px;
+    }
+    @include respond-to(medium) {
+      max-width: 540px;
+    }
     @include respond-to(large) {
-      max-width: 560px;
+      max-width: 700px;
     }
     @include respond-to(xlarge) {
-      max-width: 720px;
+      @include flex(row, space-between, flex-start);
+      max-width: 1100px;
+    }
+  }
+  &__rooket {
+    @include respond-to(xlarge) {
+      @include flex(column, space-between, stretch);
+      width: calc(100% - 22px);
+    }
+    &--title {
+      align-self: flex-start;
     }
   }
   &__partition {
@@ -529,6 +590,11 @@
     border-radius: 50px;
     cursor: pointer;
   }
+  &__see-video {
+    @include respond-to(xlarge) {
+      align-self: flex-end;
+    }
+  }
 }
 .see-all {
   font-weight: 400;
@@ -543,6 +609,12 @@
   opacity: 0.06;
   border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
   z-index: 1;
+}
+.media-circle {
+  display: none;
+  @include respond-to(large) {
+    display: block;
+  }
 }
 
 .avatar {
@@ -602,6 +674,8 @@
 
 .bg-item {
   background-color: $section-box;
+  padding-top: 2em;
+  padding-bottom: 2em;
 }
 .subject-discuss {
   > a {
@@ -651,13 +725,17 @@
   }
 }
 .podcaste {
-  color: $text-secondary;
-  font-size: 120%;
-  padding-top: 0.8em;
-  padding-bottom: 0.5em;
+  &-title {
+    font-size: 1.2rem;
+  }
+  &-subtitle {
+    color: $text-secondary;
+    padding-top: 0.8em;
+    padding-bottom: 0.5em;
+  }
   &-desc {
     color: $body-clr;
-    font-size: 120%;
+    font-size: 0.9em;
   }
   & :only-child {
     color: $body-clr;
@@ -679,22 +757,57 @@
 
 .footer {
   background-color: $footer-bg;
+  width: 100%;
   a {
     color: $white;
   }
   &-container {
-    @include flex(column, space-between, stretch);
+    @include flex(column, space-between, center);
     color: $white;
+    max-width: 460px;
   }
   &-top {
-    @include flex(row, space-between, flex-start);
-    flex-wrap: wrap;
+    @include flex(column, space-between, center);
+    
     margin-bottom: 3em;
+   
+    @include respond-to(medium) { 
+      max-width: 560px;
+    }
+    @include respond-to(large) { 
+      max-width: 760px;
+    }
+    @include respond-to(xlarge) {
+      @include flex(row, space-between, baseline);
+      flex-wrap: nowrap;
+      max-width: 1100px;
+    }
   }
   &-item {
     @include flex(column, space-evenly, stretch);
     padding: 0 2em;
     width: 100%;
+    @include respond-to(xlarge) {
+      width: calc(33% - 22px);
+      @at-root {
+        .about-us {
+          @include respond-to(xlarge) {
+          flex: 2;
+          }
+        }
+        .rooket-section {
+          @include respond-to(xlarge) {
+            flex: 1;
+            }
+        }
+        .contact-us {
+          @include respond-to(xlarge) {
+            flex: 2;
+            }
+        }
+      }
+    }
+   
   }
   &-head {
     font-size: 140%;
