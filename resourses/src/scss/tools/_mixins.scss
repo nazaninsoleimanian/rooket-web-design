@@ -1,0 +1,27 @@
+
+// mixins
+@mixin flex($direction, $justify, $align-items) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align-items;
+}
+
+@mixin general($width) {
+  margin: 0 auto;
+  width: $width;
+}
+
+@mixin text-hero($fsize, $talign) {
+  font-size: $fsize;
+  text-align: $talign;
+  line-height: 1.7;
+}
+
+@mixin respond-to($breakpoint) {
+  $type: map-get($breakpoints, $breakpoint);
+  @media #{$type} {
+    @content;
+  }
+}
+
