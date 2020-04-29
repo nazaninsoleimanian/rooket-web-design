@@ -6,12 +6,6 @@
 @import "tools/mixins.scss";
 @import "tools/placeholders.scss";
 
-/*----------MAIN FLEX-----------*/
-.main-flex {
-  @include flex(column, space-between, center);
-  margin: 0 auto;
-}
-
 /*----------HEADER NAV TOP-----------*/
 .first-nav {
   @include flex(row, space-between, center);
@@ -285,9 +279,8 @@
   }
 }
 
-/*----------FIRST SECTION----------*/
+/*----------TUTORIAL SECTION----------*/
 .tutorial-section {
-  flex: 1;
   @include respond-to(small) {
     max-width: 550px;
   }
@@ -329,6 +322,9 @@
         color: darken($text-secondary, 20%);
       }
     }
+    @at-root .flexibility {
+      @include flex(column, space-between, center);
+    }
   }
 }
 .view-more {
@@ -341,9 +337,10 @@
 
 /*----------BOX SECTION----------*/
 .box-section {
-  margin: 0 auto;
-  max-width: 460px;
-
+  max-width: 480px;
+  margin-left: -10px;
+  margin-right: -10px;
+  @include flex(column, space-between, center);
   @include respond-to(small) {
     max-width: 100%;
   }
@@ -362,6 +359,7 @@
   }
 
   &__wrap {
+    // margin-right: 3em;
     @include respond-to(large) {
       flex-wrap: wrap;
     }
@@ -373,6 +371,7 @@
   &__item {
     @include flex(column, stretch, stretch);
     margin: 2em 0;
+    padding-left: 0;
     width: calc(100% - 22px);
     @include respond-to(large) {
       width: calc(50% - 22px);
@@ -757,57 +756,61 @@
 
 .footer {
   background-color: $footer-bg;
-  width: 100%;
+  position: relative;
+  padding: 25px 0 0;
+
   a {
     color: $white;
   }
-  &-container {
-    @include flex(column, space-between, center);
-    color: $white;
-    max-width: 460px;
-  }
   &-top {
-    @include flex(column, space-between, center);
-    
-    margin-bottom: 3em;
-   
-    @include respond-to(medium) { 
+    color: $white;
+    margin: 0 auto;
+    max-width: 460px;
+    @include respond-to(small) {
       max-width: 560px;
     }
-    @include respond-to(large) { 
+    @include respond-to(medium) {
+      max-width: 560px;
+    }
+    @include respond-to(large) {
       max-width: 760px;
     }
     @include respond-to(xlarge) {
-      @include flex(row, space-between, baseline);
-      flex-wrap: nowrap;
       max-width: 1100px;
+    }
+
+    &__container {
+      @include flex(column, space-between, center);
+      margin-bottom: 3em;
+      padding: 0 1.2em;
+
+      @include respond-to(xlarge) {
+        @include flex(row, space-between, baseline);
+        flex-wrap: nowrap;
+      }
     }
   }
   &-item {
     @include flex(column, space-evenly, stretch);
-    padding: 0 2em;
     width: 100%;
+    flex: 2;
+
     @include respond-to(xlarge) {
       width: calc(33% - 22px);
       @at-root {
-        .about-us {
+        .contact-us {
           @include respond-to(xlarge) {
-          flex: 2;
+            padding-right: 6em;
           }
         }
         .rooket-section {
           @include respond-to(xlarge) {
             flex: 1;
-            }
-        }
-        .contact-us {
-          @include respond-to(xlarge) {
-            flex: 2;
-            }
+            padding-right: 6em;
+          }
         }
       }
     }
-   
   }
   &-head {
     font-size: 140%;
@@ -824,22 +827,49 @@
     font-size: 1em;
   }
   &-bottom {
-    @include flex(row, center, center);
     background-color: darken($footer-bg, 10%);
-    padding: 1.5em 1em;
-    flex-wrap: wrap;
+
+    &__container {
+      @include flex(column, space-between, center);
+      padding: 25px 0;
+      max-width: 460px;
+      margin: 0 auto;
+      @include respond-to(small) {
+        max-width: 560px;
+      }
+      @include respond-to(medium) {
+        max-width: 560px;
+      }
+      @include respond-to(large) {
+        max-width: 760px;
+      }
+      @include respond-to(xlarge) {
+        @include flex(row, space-between, center);
+        flex-wrap: nowrap;
+        max-width: 1100px;
+        padding: 2.2em 1.2em;
+       
+      }
+    }
   }
 }
 .social-media {
   @include flex(row, stretch, center);
   font-size: 1.7em;
   text-align: center;
+  @include respond-to(xlarge) {
+    padding-right: 3em;
+  }
 
   > li {
     padding: 0.2em;
   }
 }
 .copy-right {
+  @include respond-to(xlarge) {
+    margin-bottom: 0;
+  }
   margin-bottom: 1em;
   text-align: center;
+  color: $white;
 }
