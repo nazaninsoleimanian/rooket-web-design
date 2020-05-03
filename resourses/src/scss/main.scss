@@ -8,58 +8,26 @@
 
 /*----------HEADER NAV TOP-----------*/
 .first-nav {
-  @include flex(row, space-between, center);
-  padding: 0.5em;
-  margin: 0 auto;
-  max-width: 460px;
-  @include respond-to(small) {
-    max-width: 560px;
-  }
-  @include respond-to(medium) {
-    max-width: 560px;
-  }
-  @include respond-to(large) {
-    max-width: 760px;
-  }
-  @include respond-to(xlarge) {
-    max-width: 960px;
-  }
-  @include respond-to(xlarge) {
-    max-width: 1160px;
+  @extend %two-firstnav;
+  .header-nav__top {
+    border-bottom: 1px solid $border-color;
   }
   &__list {
     @include flex(row, space-between, center);
   }
   &__link {
+    font-family: 'Vazir', sans-serif;
     color: $text-primary;
     &:hover {
       color: darken($text-primary, 40%);
     }
   }
 }
-.header-nav__top {
-  border-bottom: 1px solid $border-color;
-}
 
 /*----------HEADER NAV BOTTON-----------*/
 
 .seconde-nav {
-  @include flex(row, space-between, center);
-  padding: 0.5em;
-  margin: 0 auto;
-  max-width: 460px;
-  @include respond-to(small) {
-    max-width: 560px;
-  }
-  @include respond-to(medium) {
-    max-width: 560px;
-  }
-  @include respond-to(large) {
-    max-width: 760px;
-  }
-  @include respond-to(xlarge) {
-    max-width: 1160px;
-  }
+  @extend %two-firstnav;
   &__title {
     &--link {
       font-size: 100%;
@@ -73,7 +41,6 @@
   &__search {
     @include flex(row, center, center);
     height: 47px;
-
     position: relative;
     display: none;
     flex-basis: 55%;
@@ -87,53 +54,53 @@
     font-size: 110%;
     padding-right: 1em;
     outline: none;
+    overflow: hidden;
     border: 1px solid $border-input;
     border-radius: 0 0.2em 0.2em 0;
-    overflow: hidden;
   }
   &__btn {
+    background-color: $text-secondary;
+    padding: 1em;
     outline: none;
+    cursor: pointer;
     position: absolute;
     top: 0;
     left: 0;
     border-radius: 0.2em 0 0 0.2em;
     border: 2px solid $text-secondary;
-    background-color: $text-secondary;
-    padding: 1em;
-    cursor: pointer;
   }
   &__list {
-    @include flex(row, space-between, center);
     display: none;
     @include respond-to(xlarge) {
       display: block;
+      @include flex(row, space-between, center);
     }
   }
-}
+  @at-root {
+    #seconde-nav__icon {
+      color: $white;
+      font-size: 150%;
+    }
+    .register {
+      @extend %seconde-nav__listfont;
+      color: $text-primary;
+      &:hover {
+        color: $text-span;
+      }
+    }
+    .login {
+      color: $text-span;
+      @extend %seconde-nav__listfont;
+    }
 
-#seconde-nav__icon {
-  color: $white;
-  font-size: 150%;
-}
-
-.register {
-  @extend %seconde-nav__list;
-  color: $text-primary;
-  &:hover {
-    color: $text-span;
-  }
-}
-.login {
-  color: $text-span;
-  @extend %seconde-nav__list;
-}
-
-.mobile-nav-icon {
-  font-size: 2.7rem;
-  color: $body-clr;
-  cursor: pointer;
-  @include respond-to(xlarge) {
-    display: none;
+    .mobile-nav-icon {
+      font-size: 2.7rem;
+      color: $body-clr;
+      cursor: pointer;
+      @include respond-to(xlarge) {
+        display: none;
+      }
+    }
   }
 }
 
@@ -141,31 +108,31 @@
 .header-menu__toggle {
   display: none;
   background-color: $white;
-  width: 95%;
-  right: 1em;
-  position: absolute;
-  z-index: 7000;
   font-size: 120%;
+  width: 95%;
+  position: absolute;
+  right: 1em;
+  z-index: 7000;
   &--list {
     @include flex(column, center, stretch);
   }
   &--item {
-    border-bottom: 1px solid $border-color;
     padding: 1em;
-    > a:hover {
-      color: $white;
-    }
+    border-bottom: 1px solid $border-color;
+    
     &:hover {
       background-color: $toggle-bg;
     }
+    &:hover > a {
+      color: $white;
+    }
   }
-}
-
-.search-input {
-  border: 1px solid $border-color;
-  border-radius: 0.5em;
-  width: 95%;
-  padding: 0.5em;
+  @at-root .search-input {
+    border: 1px solid $border-color;
+    border-radius: 0.5em;
+    width: 95%;
+    padding: 0.5em;
+  }
 }
 
 /*----------HEADER MENU-----------*/
@@ -175,8 +142,8 @@
     display: block;
   }
   background-color: $bg-menu;
-  padding-top: 1em;
   height: 50px;
+  padding-top: 1em;
   &__list {
     @include flex(row, flex-start, center);
     @include respond-to(xlarge) {
@@ -184,8 +151,8 @@
     }
   }
   &__link {
-    color: $white;
     font-size: 110%;
+    color: $white;
     padding: 0 0.4em;
     margin-left: 2em;
     &:hover {
@@ -200,18 +167,18 @@
 /*----------HEADER HERO PART-----------*/
 .header-heropart {
   @include flex(row, center, center);
-  position: relative;
   background: $linear-gradient;
   height: 90vh;
   padding: 2em 3em;
+  position: relative;
 
   &__img {
     display: none;
-    position: absolute;
-    opacity: 0.07;
-    right: -1px;
     width: 100%;
+    position: absolute;
+    right: -1px;
     top: -10px;
+    opacity: 0.07;
 
     @include respond-to(large) {
       display: block;
@@ -243,15 +210,15 @@
     }
 
     @include respond-to(large) {
+      @include flex(column, center, flex-start);
       max-width: 760px;
       margin-left: 4em;
-      @include flex(column, center, flex-start);
     }
     @include respond-to(xlarge) {
-      flex: 1;
-      align-self: flex-start;
-      padding: 100px 0;
       @include flex(column, center, center);
+      align-self: flex-start;
+      flex: 1;
+      padding: 100px 0;
     }
   }
   &__title {
@@ -303,8 +270,8 @@
       @include flex(row, space-between, center);
     }
     &--item {
-      border-bottom: 3px solid $text-secondary;
       padding-bottom: 1.2em;
+      border-bottom: 3px solid $text-secondary;
     }
     &--link1 {
       font-size: 140%;
@@ -322,16 +289,16 @@
         color: darken($text-secondary, 20%);
       }
     }
-    @at-root .flexibility {
-      @include flex(column, space-between, center);
+    @at-root .view-more {
+      font-size: 120%;
+      color: $text-secondary;
+      &:hover {
+        color: lighten($text-secondary, 10%);
+      }
     }
   }
-}
-.view-more {
-  font-size: 120%;
-  color: $text-secondary;
-  &:hover {
-    color: lighten($text-secondary, 10%);
+  @at-root .flexibility {
+    @include flex(column, space-between, center);
   }
 }
 
@@ -848,7 +815,6 @@
         flex-wrap: nowrap;
         max-width: 1100px;
         padding: 2.2em 1.2em;
-       
       }
     }
   }

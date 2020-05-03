@@ -4,4 +4,6 @@ $breakpoints: (
     "medium": "screen and (min-width: 681px) and (max-width: 780px)",
     "large": "screen and (min-width: 781px) and (max-width: 980px)",
     "xlarge": "screen and (min-width: 981px) and (max-width: 1400px)",
-);
+) !default;
+
+// $new-breakpoint: '"2xlarge": "screen and (min-width: 1181px) and (max-width: 1400px)"';

@@ -25,3 +25,9 @@
   }
 }
 
+// @mixin respond-to($new-breakpoint) {
+//   $type: map-get($breakpoints, $new-breakpoint);
+//   @media #{$type} {
+//     @content;
+//   }
+// }

@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale= 1.0">
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v[e.g.25.0.0]/dist/font-face.css" rel="stylesheet"
+        type="text/css" />
     <link rel="stylesheet" type="text/css" href="resourses/src/css/style.css">
     <link rel="stylesheet" type="text/css" href="vendors/css/normalize.css">
     <link rel="stylesheet" type="text/css" href="vendors/fonts/css/all.css">
@@ -41,7 +43,7 @@
                 <a href="#" class="mobile-nav-icon"><i class="fas fa-bars"></i></a>
             </nav>
         </div>
-        <div class="header-menu__toggle">
+        <div class="header-menu__toggle" id="toggle">
             <nav class="third-nav">
                 <ul class="header-menu__toggle--list">
                     <li class="header-menu__toggle--item">
@@ -820,6 +822,18 @@
     function myWidth() {
         document.getElementById("demo").innerHTML = window.innerWidth;
     }
+
+
+    var menu__toggle = document.getElementsByClassName("header-menu__toggle");
+    var mobile_nav = document.getElementsByClassName("mobile-nav-icon");
+    mobile_nav[0].onclick = function () {
+        menu__toggle[0].style.display = "block";
+        mobile_nav[0].onclick = function (){
+            menu__toggle[0].style.display = "none";
+        }
+    };
+
+
 </script>
 
 </html>

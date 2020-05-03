@@ -1,5 +1,23 @@
 //placeholder
-%seconde-nav__list {
+%seconde-nav__listfont {
     font-size: 120%;
     font-weight: 600;
   }
+%two-firstnav {
+  @include flex(row, space-between, center);
+  padding: 0.5em;
+  margin: 0 auto;
+  max-width: 460px;
+  @include respond-to(small) {
+    max-width: 560px;
+  }
+  @include respond-to(medium) {
+    max-width: 560px;
+  }
+  @include respond-to(large) {
+    max-width: 760px;
+  }
+  @include respond-to(xlarge) {
+    max-width: 1160px;
+  }
+}
