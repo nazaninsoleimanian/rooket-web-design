@@ -818,22 +818,20 @@
     </footer>
 </body>
 <script>
-    window.addEventListener("resize", myWidth);
-    function myWidth() {
-        document.getElementById("demo").innerHTML = window.innerWidth;
-    }
 
-
-    var menu__toggle = document.getElementsByClassName("header-menu__toggle");
     var mobile_nav = document.getElementsByClassName("mobile-nav-icon");
+    var menu__toggle = document.getElementsByClassName("header-menu__toggle");
     mobile_nav[0].onclick = function () {
-        menu__toggle[0].style.display = "block";
-        mobile_nav[0].onclick = function (){
+        if (menu__toggle[0].style.display === "none") {
+            menu__toggle[0].style.display = "block";
+        } else {
             menu__toggle[0].style.display = "none";
         }
-    };
-
-
+    }
+// window.addEventListener("resize", myWidth);
+// function myWidth() {
+//     document.getElementById("demo").innerHTML = window.innerWidth;
+// }
 </script>
 
 </html>
